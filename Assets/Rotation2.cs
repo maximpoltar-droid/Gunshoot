@@ -19,7 +19,7 @@ public class Rotation2 : MonoBehaviour
         transform.Rotate(0, horizontalMouse * sensetivity, 0);
 
         //Перемещение
-        /*if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
         }
@@ -34,6 +34,6 @@ public class Rotation2 : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
-        }*/
+        }
     }
 }
