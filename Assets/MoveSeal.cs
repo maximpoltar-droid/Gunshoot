@@ -22,9 +22,6 @@ private Vector3 velocity;
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * horizontal + transform.forward * vertical;
-        controller.Move(move * Speed * Time.deltaTime);
-
         groundedPlayer = controller.isGrounded;
 
         if (groundedPlayer && velocity.y < 0)
@@ -32,10 +29,22 @@ private Vector3 velocity;
             velocity.y = -2f;
         }
 
-        if (Input.GetKey(KeyCode.Space) && groundedPlayer)
+        // Прыжок работает только на земле, независимо от движения
+        if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
         {
-            velocity.y = jumpHeight;
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+        // Движение по горизонтали (без учета вертикального направления камеры)
+        Vector3 move = transform.right * horizontal;
+        move.y = 0; // Убираем любую вертикальную компоненту
+        Vector3 forward = transform.forward;
+        forward.y = 0; // Убираем вертикальную компоненту из направления вперед
+        forward.Normalize(); // Нормализуем вектор
+        move += forward * vertical;
+        
+        controller.Move(move * Speed * Time.deltaTime);
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
