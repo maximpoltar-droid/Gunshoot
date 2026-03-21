@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fish
   - Enemy
+  - Trigger1
   layers:
   - Default
   - TransparentFX
