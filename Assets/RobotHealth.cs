@@ -1,7 +1,9 @@
 using UnityEngine;
+using TMPro;
 
 public class RobotHealth : MonoBehaviour
 {
+    public TextMeshProUGUI robotKill;
     public int maxHealth = 5;
     private int currentHealth;
     
@@ -23,6 +25,7 @@ public class RobotHealth : MonoBehaviour
     
     void Die()
     {
+
         Debug.Log("Robot destroyed!");
         Destroy(gameObject);
     }

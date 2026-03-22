@@ -12,10 +12,18 @@ public class EnemyController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.position);
+        if (SafeZone.go == true)
+        {
+            agent.SetDestination(player.position);
+            
+        }
+        if (SafeZone.go == false)
+        {
+            
+            agent.SetDestination(new Vector3 (transform.position.x - 250,transform.position.y,transform.position.z));
+            SafeZone.go = true;
+        }
     }
 }
