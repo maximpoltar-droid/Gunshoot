@@ -9,7 +9,7 @@ public class RobotHealth : MonoBehaviour
     
     void Start()
     {
-        robotKill.transform.position.y = 100;
+       // robotKill.transform.position.y = 100;
         currentHealth = maxHealth;
     }
     
@@ -29,6 +29,6 @@ public class RobotHealth : MonoBehaviour
 
         Debug.Log("Robot destroyed!");
         Destroy(gameObject);
-        robotKill.transform.position.y = - 122;
+      //  robotKill.transform.position.y = - 122;
     }
 }
