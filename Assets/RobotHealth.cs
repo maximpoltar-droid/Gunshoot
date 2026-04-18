@@ -1,15 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class RobotHealth : MonoBehaviour
 {
-    public TextMeshProUGUI robotKill;
+    public GameObject robotKill;
     public int maxHealth = 5;
     private int currentHealth;
     
     void Start()
     {
-       // robotKill.transform.position.y = 100;
+        robotKill.SetActive(false);
         currentHealth = maxHealth;
     }
     
@@ -26,9 +28,8 @@ public class RobotHealth : MonoBehaviour
     
     void Die()
     {
-
         Debug.Log("Robot destroyed!");
+        robotKill.SetActive(true);
         Destroy(gameObject);
-      //  robotKill.transform.position.y = - 122;
     }
 }
