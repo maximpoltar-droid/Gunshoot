@@ -14,17 +14,20 @@ public class RotationScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rotationX -= Input.GetAxis("Mouse Y") * verSpeed;
-        rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
-        float delta = Input.GetAxis("Mouse X") * horSpeed;
-        rotationY = transform.localEulerAngles.y + delta;
-        transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+        if (StartGame.pause == false)
+        {
+            rotationX -= Input.GetAxis("Mouse Y") * verSpeed;
+            rotationX = Mathf.Clamp(rotationX, minVert, maxVert);
+            float delta = Input.GetAxis("Mouse X") * horSpeed;
+            rotationY = transform.localEulerAngles.y + delta;
+            transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+        }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Trigger1
   - Bullet
   - GameOverImage
+  - RobotCollider
   layers:
   - Default
   - TransparentFX

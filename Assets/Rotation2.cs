@@ -10,13 +10,11 @@ public class Rotation2 : MonoBehaviour
     public float sensetivity = 200f;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
     void Update()
     {
-        float horizontalMouse = Input.GetAxis("Mouse X");
-        transform.Rotate(0, horizontalMouse * sensetivity, 0);
 
         //Перемещение
         if (Input.GetKey(KeyCode.W))

@@ -19,18 +19,20 @@ public class Shoot
 
     private void Shoots()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
+        if (StartGame.pause == false)
         {
-            Debug.Log(hit.transform.name);
-            
-            // Проверяем, попали ли мы в робота
-            if (hit.transform.CompareTag("Enemy"))
+            RaycastHit hit;
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
             {
-                RobotHealth robotHealth = hit.transform.GetComponent<RobotHealth>();
-                if (robotHealth != null)
+                Debug.Log(hit.transform.name);
+
+                if (hit.transform.CompareTag("Enemy"))
                 {
-                    robotHealth.TakeDamage(1);
+                    RobotHealth robotHealth = hit.transform.GetComponent<RobotHealth>();
+                    if (robotHealth != null)
+                    {
+                        robotHealth.TakeDamage(1);
+                    }
                 }
             }
         }
