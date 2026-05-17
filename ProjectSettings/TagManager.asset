@@ -10,6 +10,10 @@ TagManager:
   - Bullet
   - GameOverImage
   - RobotCollider
+  - Destin1
+  - Destin2
+  - Destin3
+  - Destin4
   layers:
   - Default
   - TransparentFX
