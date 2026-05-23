@@ -7,6 +7,8 @@ public class Shoot
 {
     public ParticleSystem fire;
     private float range = 100;
+    private AudioSource audioSource;
+    public AudioClip Sound_01;
     public Camera mainCamera;
     void Update()
     {
@@ -19,6 +21,8 @@ public class Shoot
 
     private void Shoots()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(Sound_01, 1f);
         if (StartGame.pause == false)
         {
             RaycastHit hit;

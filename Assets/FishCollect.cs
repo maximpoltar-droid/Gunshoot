@@ -9,6 +9,11 @@ public class FishCollect : MonoBehaviour
 
 
 {
+    private AudioSource audioSource;
+    public AudioClip Collectable_01;
+
+
+
     public TextMeshProUGUI eattenFishText;
     public int eattenFish = 0;
     void Start()
@@ -29,6 +34,8 @@ public class FishCollect : MonoBehaviour
             eattenFish += 1;
             eattenFishText.text ="EATEN FISH = "+ eattenFish.ToString();
             Destroy(collision.gameObject);
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Collectable_01, 1f);
         }
     }
 }

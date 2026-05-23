@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
-    /*   public Transform player;
+       public Transform player;
        public float visionRange = 20f;
        public float visionAngle = 60f;
        public LayerMask obstacleLayer;
@@ -79,5 +79,5 @@ public class EnemyVision : MonoBehaviour
        public bool CanSeePlayer()
        {
            return playerInVision;
-       }*/
+       }
 }

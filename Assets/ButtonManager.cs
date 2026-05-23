@@ -8,7 +8,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject menu;
     public 
 
-    private void Start()
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
