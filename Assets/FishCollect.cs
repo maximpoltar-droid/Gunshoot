@@ -15,7 +15,7 @@ public class FishCollect : MonoBehaviour
 
 
     public TextMeshProUGUI eattenFishText;
-    public int eattenFish = 0;
+    public static int eattenFish = 0;
     void Start()
     {
         eattenFish = 0;

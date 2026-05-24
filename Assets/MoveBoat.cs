@@ -9,25 +9,27 @@ public class MoveBoat : MonoBehaviour
     public Transform destination4;
     private float speed = 10f;
 
+
     private void Start()
     {
         destination = destination1;
     }
     private void Update()
     {
-        if (destination == null) return;
-        
-        float distance = Vector3.Distance(transform.position, destination.position);
-
-        float timeToDestination = distance / speed;
-
-        if (timeToDestination > 0)
+        if (destination != null && FishCollect.eattenFish == 4)
         {
-            float rotationSpeed = 1f / timeToDestination;
-            Quaternion targetRotation = destination.rotation;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            float distance = Vector3.Distance(transform.position, destination.position);
+
+            float timeToDestination = distance / speed;
+
+            if (timeToDestination > 0)
+            {
+                float rotationSpeed = 1f / timeToDestination;
+                Quaternion targetRotation = destination.rotation;
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+            transform.position = Vector3.MoveTowards(transform.position, destination.position, speed * Time.deltaTime);
         }
-        transform.position = Vector3.MoveTowards(transform.position, destination.position, speed * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {
