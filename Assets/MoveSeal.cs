@@ -48,6 +48,5 @@ private Vector3 velocity;
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-
 }
 
