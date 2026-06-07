@@ -15,6 +15,7 @@ TagManager:
   - Destin3
   - Destin4
   - BoatCollider
+  - DangerZone
   layers:
   - Default
   - TransparentFX

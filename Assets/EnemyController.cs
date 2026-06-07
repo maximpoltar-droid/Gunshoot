@@ -12,17 +12,21 @@ public class EnemyController : MonoBehaviour
     public GameObject bullet;
     public Transform hand;
     private Quaternion bulletRotation;
+    private float bulletTimer = 1f;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
     }
     void Update()
     {
-        if (canShoot == true)
+
+        if (canShoot == true && bulletTimer ==1f)
         {
+            bulletTimer -= Time.deltaTime;
             bulletRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - 90, 0);
 
-            Instantiate(bullet, hand.position, bulletRotation);
+                Instantiate(bullet, hand.position, bulletRotation);
+            bulletTimer = 1f;
         }
         if (stateAvoidDanger == false)
         { 
@@ -30,13 +34,14 @@ public class EnemyController : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other)
+
     {
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player have found");
             canShoot = true;
         }
-        if (other.gameObject.CompareTag("Trigger1"))
+        if (other.gameObject.CompareTag("DangerZone"))
         {
             StartCoroutine(WaitAndPrint());
             stateAvoidDanger = true;
@@ -59,7 +64,7 @@ public class EnemyController : MonoBehaviour
         {
             canShoot = false;
         }
-        if (other.gameObject.CompareTag("Trigger1"))
+        if (other.gameObject.CompareTag("DangerZone"))
         {
             Debug.Log("Robot has exit the water");
         }
