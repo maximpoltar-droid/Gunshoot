@@ -13,6 +13,9 @@ public class EnemyController : MonoBehaviour
     public Transform hand;
     private Quaternion bulletRotation;
     private float bulletTimer = 1f;
+    private AudioSource audioSource;
+    public AudioClip laser;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -20,13 +23,22 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
 
-        if (canShoot == true && bulletTimer ==1f)
+        if (canShoot == true && bulletTimer == 1f)
         {
-            bulletTimer -= Time.deltaTime;
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(laser, 1f);
+
+            Debug.Log(bulletTimer);
             bulletRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y - 90, 0);
 
-                Instantiate(bullet, hand.position, bulletRotation);
+            Instantiate(bullet, hand.position, bulletRotation);
+
+        }
+        bulletTimer -= Time.deltaTime;
+        if (bulletTimer <= 0f)
+        {
             bulletTimer = 1f;
+            Debug.Log("bullet timer = 1");
         }
         if (stateAvoidDanger == false)
         { 

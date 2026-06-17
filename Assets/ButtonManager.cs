@@ -6,7 +6,7 @@ public class ButtonManager : MonoBehaviour
     public AudioClip TensionPart3Loop;
     public AudioClip StealthSynthLayerLoop;
     public GameObject menu;
-    public 
+    public GameObject hintScreen;
 
     void Start()
     {
@@ -22,5 +22,12 @@ public class ButtonManager : MonoBehaviour
         audioSource.loop = true;
         audioSource.clip = StealthSynthLayerLoop;
         audioSource.Play();
+    }
+    public void CloseHint()
+    {
+        hintScreen.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
