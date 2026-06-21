@@ -6,11 +6,17 @@ public class ButtonManager : MonoBehaviour
     public AudioClip TensionPart3Loop;
     public AudioClip StealthSynthLayerLoop;
     public GameObject menu;
+    public GameObject player;
+    public RotationScript rotationscript;
     public GameObject hintScreen;
+    public Shoot sealshoot;
+
 
     void Start()
     {
+        rotationscript = player.GetComponent<RotationScript>();
         audioSource = GetComponent<AudioSource>();
+        sealshoot = player.GetComponent<Shoot>();
     }
     public void PlayButton()
     {
@@ -25,6 +31,8 @@ public class ButtonManager : MonoBehaviour
     }
     public void CloseHint()
     {
+        sealshoot.enabled = true;
+        rotationscript.enabled = true;
         Debug.Log("button pressed");
         hintScreen.SetActive(false);
         Time.timeScale = 1;
