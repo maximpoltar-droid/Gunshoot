@@ -25,6 +25,7 @@ public class ButtonManager : MonoBehaviour
     }
     public void CloseHint()
     {
+        Debug.Log("button pressed");
         hintScreen.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;

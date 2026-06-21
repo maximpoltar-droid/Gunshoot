@@ -8,6 +8,8 @@ public class RobotHealth : MonoBehaviour
     public GameObject robotKill;
     public int maxHealth = 5;
     private int currentHealth;
+    public GameObject hintPaper;
+    public GameObject robot;
     
     void Start()
     {
@@ -23,6 +25,8 @@ public class RobotHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            hintPaper.SetActive(true);
+            hintPaper.transform.position = robot.transform.position;
         }
     }
     

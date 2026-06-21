@@ -3,6 +3,7 @@ using UnityEngine;
 public class HintScreen : MonoBehaviour
 {
     public GameObject hintScreen;
+    public GameObject hintPaper;
 
     private void OnTriggerEnter(Collider other)
 
@@ -13,6 +14,7 @@ public class HintScreen : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0;
+            Destroy(hintPaper);
         }
     }
 }
