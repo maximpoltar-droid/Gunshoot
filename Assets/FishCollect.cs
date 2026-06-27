@@ -28,6 +28,10 @@ public class FishCollect : MonoBehaviour
     }
         private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Shovel"))
+        {
+            Debug.Log("shovel +1");
+        }
              if (collision.gameObject.CompareTag("Fish"))
         {
             Debug.Log("Seal ate fish");

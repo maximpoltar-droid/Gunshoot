@@ -16,6 +16,7 @@ TagManager:
   - Destin4
   - BoatCollider
   - DangerZone
+  - Shovel
   layers:
   - Default
   - TransparentFX
