@@ -11,6 +11,8 @@ public class FishCollect : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip Collectable_01;
+    public GameObject shovelItem;
+    public GameObject shovelInHand;
 
 
 
@@ -31,8 +33,10 @@ public class FishCollect : MonoBehaviour
         if (collision.gameObject.CompareTag("Shovel"))
         {
             Debug.Log("shovel +1");
+            Destroy(shovelItem);
+            shovelInHand.SetActive(true);
         }
-             if (collision.gameObject.CompareTag("Fish"))
+        if (collision.gameObject.CompareTag("Fish"))
         {
             Debug.Log("Seal ate fish");
             eattenFish += 1;
