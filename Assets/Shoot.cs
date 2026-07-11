@@ -10,32 +10,54 @@ public class Shoot
     private AudioSource audioSource;
     public AudioClip Sound_01;
     public Camera mainCamera;
+    public Animator shoot;
+    private float timer;
+    private float timeValue = 0.4f;
+    private float timer1;
+    private float timeValue1 = 1.5f;
+    private bool canShoot;
+    private void Start()
+    {
+        timer = timeValue;
+        timer1 = timeValue1;
+    }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        timer -= Time.deltaTime;
+        timer1 -= Time.deltaTime;
+        if (Input.GetMouseButtonDown(0) && canShoot == true)
         {
             fire.Play();
             Shoots();
+            shoot.SetTrigger("Shoot");
+            timer1 = timeValue1;
+        }
+        if (timer1 <= 0)
+        {
+            canShoot = true;
         }
     }
 
     private void Shoots()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(Sound_01, 1f);
-        if (StartGame.pause == false)
+        if (timer <= 0)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
+            audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(Sound_01, 1f);
+            if (StartGame.pause == false)
             {
-                Debug.Log(hit.transform.name);
-
-                if (hit.transform.CompareTag("Enemy"))
+                RaycastHit hit;
+                if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
                 {
-                    RobotHealth robotHealth = hit.transform.GetComponent<RobotHealth>();
-                    if (robotHealth != null)
+                    Debug.Log(hit.transform.name);
+
+                    if (hit.transform.CompareTag("Enemy"))
                     {
-                        robotHealth.TakeDamage(1);
+                        RobotHealth robotHealth = hit.transform.GetComponent<RobotHealth>();
+                        if (robotHealth != null)
+                        {
+                            robotHealth.TakeDamage(1);
+                        }
                     }
                 }
             }
