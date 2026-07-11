@@ -38,7 +38,6 @@ public class EnemyController : MonoBehaviour
         if (bulletTimer <= 0f)
         {
             bulletTimer = 1f;
-            Debug.Log("bullet timer = 1");
         }
         if (stateAvoidDanger == false)
         { 

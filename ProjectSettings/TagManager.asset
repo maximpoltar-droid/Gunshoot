@@ -17,6 +17,7 @@ TagManager:
   - BoatCollider
   - DangerZone
   - Shovel
+  - ShovelSlot
   layers:
   - Default
   - TransparentFX
