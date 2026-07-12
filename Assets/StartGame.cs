@@ -17,7 +17,7 @@ public class StartGame : MonoBehaviour
     }
     IEnumerator WaitAndPrint()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         Debug.Log("Прошла 1 секунда!");
         Time.timeScale = 0f;

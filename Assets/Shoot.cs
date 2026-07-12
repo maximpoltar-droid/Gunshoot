@@ -12,36 +12,25 @@ public class Shoot
     public Camera mainCamera;
     public Animator shoot;
     private float timer;
-    private float timeValue = 0.4f;
-    private float timer1;
-    private float timeValue1 = 1.5f;
-    private bool canShoot;
+    private float timeValue = 0.45f;
     private void Start()
     {
         timer = timeValue;
-        timer1 = timeValue1;
-    }
+}
     void Update()
     {
         timer -= Time.deltaTime;
-        timer1 -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && canShoot == true)
+        if (Input.GetMouseButtonDown(0) && timer <= 0)
         {
             fire.Play();
             Shoots();
             shoot.SetTrigger("Shoot");
-            timer1 = timeValue1;
-        }
-        if (timer1 <= 0)
-        {
-            canShoot = true;
+            timer = timeValue;
         }
     }
 
     private void Shoots()
     {
-        if (timer <= 0)
-        {
             audioSource = GetComponent<AudioSource>();
             audioSource.PlayOneShot(Sound_01, 1f);
             if (StartGame.pause == false)
@@ -55,12 +44,12 @@ public class Shoot
                     {
                         RobotHealth robotHealth = hit.transform.GetComponent<RobotHealth>();
                         if (robotHealth != null)
+
                         {
                             robotHealth.TakeDamage(1);
                         }
                     }
                 }
             }
-        }
     }
 }
